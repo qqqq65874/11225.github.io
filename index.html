@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>李星华 - 个人简介</title>
+  <meta name="description" content="李星华 — 15岁电商与AI实战派 | Portfolio" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --surface: rgba(255,255,255,0.04);
+      --surface-strong: rgba(255,255,255,0.08);
+      --radius: 18px;
+      --max-width: 1080px;
+      --gap: 22px;
+      --transition: 280ms ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, rgba(56,189,248,0.12), transparent 28%), var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      display: flex;
+      justify-content: center;
+      padding: 28px;
+    }
+    .container {
+      width: min(100%, var(--max-width));
+    }
+    header.topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .brand-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .brand-subtitle {
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+    nav.nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    nav.nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: background var(--transition), color var(--transition);
+      font-weight: 600;
+    }
+    nav.nav a:hover,
+    nav.nav a:focus-visible {
+      color: var(--text);
+      background: rgba(56,189,248,0.12);
+      outline: none;
+    }
+    .menu-button {
+      display: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 26px;
+      align-items: center;
+      padding: 34px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.18);
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      margin: 0;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      letter-spacing: -0.05em;
+    }
+    .hero-subtitle {
+      margin: 14px 0 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .hero-text {
+      margin-top: 18px;
+      color: var(--muted);
+      max-width: 620px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-end;
+    }
+    .button, .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      text-decoration: none;
+    }
+    .button {
+      background: linear-gradient(135deg, rgba(56,189,248,0.95), rgba(56,189,248,0.55));
+      color: var(--bg);
+      box-shadow: 0 16px 34px rgba(56,189,248,0.22);
+      padding: 0 22px;
+    }
+    .button-secondary {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0 20px;
+    }
+    .button:hover, .button-secondary:hover {
+      transform: translateY(-1px);
+    }
+    main {
+      display: grid;
+      gap: var(--gap);
+    }
+    section {
+      padding: 28px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+    }
+    section h2 {
+      margin: 0 0 16px;
+      font-size: 1.18rem;
+      color: var(--text);
+    }
+    section p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      display: grid;
+      gap: 10px;
+    }
+    .skill-emoji {
+      font-size: 1.5rem;
+    }
+    .skill-name {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 52px rgba(0,0,0,0.16);
+    }
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.12);
+      color: var(--accent);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .contact-item strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .contact-row img {
+      max-width: 200px;
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    footer {
+      text-align: center;
+      padding: 18px 0 8px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 520ms ease, transform 520ms ease;
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-actions { align-items: flex-start; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      body { padding: 18px; }
+      header.topbar { flex-wrap: wrap; gap: 14px; }
+      nav.nav { display: none; }
+      .menu-button { display: inline-flex; }
+      .brand { flex: 1 1 100%; }
+      .hero { padding: 26px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-row { flex-direction: column; align-items: flex-start; }
+    }
+    .mobile-menu {
+      position: absolute;
+      right: 18px;
+      top: 78px;
+      width: 220px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(15,23,42,0.98);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 26px 60px rgba(0,0,0,0.22);
+      z-index: 50;
+    }
+    .mobile-menu.open {
+      display: flex;
+    }
+    .mobile-menu a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 14px;
+      transition: background var(--transition);
+    }
+    .mobile-menu a:hover {
+      background: rgba(56,189,248,0.12);
+      color: var(--text);
+    }
+    .focus-ring:focus-visible {
+      outline: 3px solid rgba(56,189,248,0.28);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <div class="avatar" aria-label="头像">
+          <img src="avatar.jpg" alt="风度翩翩头像" />
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">风度翩翩</div>
+          <div class="brand-subtitle">河南 郑州</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="主导航">
+        <a class="focus-ring" href="#about">关于我</a>
+        <a class="focus-ring" href="#skills">技能</a>
+        <a class="focus-ring" href="#projects">案例</a>
+        <a class="focus-ring" href="#contact">联系</a>
+      </nav>
+
+      <button class="menu-button focus-ring" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">
+        菜单
+      </button>
+
+      <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a class="focus-ring" href="#about">关于我</a>
+        <a class="focus-ring" href="#skills">技能</a>
+        <a class="focus-ring" href="#projects">案例</a>
+        <a class="focus-ring" href="#contact">联系</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero reveal" aria-labelledby="heroTitle">
+        <div>
+          <h1 id="heroTitle" class="hero-title">李星华</h1>
+          <p class="hero-subtitle">15岁电商与AI实战派</p>
+          <p class="hero-text">
+            专注于AI智能体与电商选品分析，实践驱动，打造落地案例与实际运营增长。
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a class="button focus-ring" href="#projects">查看我的案例</a>
+          <a class="button-secondary focus-ring" href="#contact">联系我</a>
+        </div>
+      </section>
+
+      <section id="about" class="reveal" aria-labelledby="aboutTitle">
+        <h2 id="aboutTitle">关于我</h2>
+        <p>我是一名初三毕业生。</p>
+        <p style="margin-top: 12px;">我在学习使用AI智能体，学习电商运营。</p>
+      </section>
+
+      <section id="skills" class="reveal" aria-labelledby="skillsTitle">
+        <h2 id="skillsTitle">技能</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-emoji">🤖</div>
+            <div class="skill-name">AI工具</div>
+            <p>DeepSeek-V4 Flash</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-emoji">📊</div>
+            <div class="skill-name">电商运营</div>
+            <p>选品，运营，管理</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-emoji">🛠️</div>
+            <div class="skill-name">技术工具</div>
+            <p>AI智能体，电商平台</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal" aria-labelledby="projectsTitle">
+        <h2 id="projectsTitle">实战案例</h2>
+        <div class="projects-grid">
+          <article class="project-card" aria-labelledby="project1Title">
+            <h3 id="project1Title">工厂企业拓宽宣传</h3>
+            <p>为本地中型工厂搭建网站，管理内务，扩大宣传路径，制作私人或企业名片。</p>
+            <div class="tags">
+              <span class="tag">#AI落地</span>
+              <span class="tag">#Prompt工程</span>
+              <span class="tag">#降本增效</span>
+            </div>
+          </article>
+          <article class="project-card" aria-labelledby="project2Title">
+            <h3 id="project2Title">数码配件选品模型</h3>
+            <p>建立参数对比体系，挖掘数据线/拓展坞市场的价格差与信息差。</p>
+            <div class="tags">
+              <span class="tag">#选品分析</span>
+              <span class="tag">#参数党</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal" aria-labelledby="contactTitle">
+        <h2 id="contactTitle">联系</h2>
+        <div class="contact-grid">
+          <div class="contact-item"><strong>微信：</strong>li3517568142</div>
+          <div class="contact-item"><strong>邮箱：</strong>li591129@126.com</div>
+          <div class="contact-item"><strong>地址：</strong>河南省郑州市登封市</div>
+          <div class="contact-row">
+            <a class="button focus-ring" href="resume.pdf" download="resume.pdf">下载简历</a>
+            <a class="button-secondary focus-ring" href="mailto:li591129@126.com">发送邮件</a>
+          </div>
+          <div>
+            <p style="margin: 0 0 12px 0; color: var(--muted);">微信二维码</p>
+            <img src="wechat-qrcode.jpg" alt="我的微信二维码" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="reveal">
+      © <span id="year"></span> 风度翩翩 — 专注实战与成长
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.setAttribute('aria-hidden', String(expanded));
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-menu a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      });
+    });
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach((item) => observer.observe(item));
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (event) => {
+        const href = anchor.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) {
+            event.preventDefault();
+            window.scrollTo({
+              top: target.getBoundingClientRect().top + window.pageYOffset - 14,
+              behavior: 'smooth'
+            });
+            history.replaceState(null, '', href);
+          }
+        }
+      });
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        mobileMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+  </script>
+</body>
+</html>
