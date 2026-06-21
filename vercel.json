@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "name": "lixinghua-ai-services",
+  "builds": [],
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/(.*\\.html)", "dest": "/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}

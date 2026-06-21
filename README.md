@@ -1,27 +1,36 @@
-# 李星华 — 个人商业服务网站
+# 李星华 — AI电商服务 | 工厂网站搭建
 
-## 网站结构
+> 15岁实战派，帮中小企业用AI降本增效
+
+## 🚀 一键部署到 Vercel（国内秒开）
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/qqqq65874/11225.github.io)
+
+1. 点上面按钮 → 用 GitHub 登录
+2. 直接点 **Deploy**
+3. 获得 `xxx.vercel.app` 域名，国内访问流畅
+
+## 📁 项目结构
 
 | 文件 | 说明 |
 |------|------|
-| `index.html` | 主站 — 个人品牌 + 服务展示 + 案例 + 联系方式 |
-| `factory-website.html` | 工厂网站搭建专项服务页（¥299起） |
-| `ai-selection-tool.html` | AI电商选品分析工具演示页（¥99起） |
+| `index.html` | 首页 — 服务展示 + 案例 + 联系方式 |
+| `factory-website.html` | 工厂网站搭建专项页 — 套餐 + 流程 |
+| `ai-selection-tool.html` | AI电商选品分析演示页 |
+| `推广文案-直接用.md` | 小红书/朋友圈/闲鱼推广模板 |
 | `AI赚钱案例.md` | AI变现方式参考合集 |
-| `avatar.jpg` | 头像 |
-| `wechat-qrcode.jpg` | 微信二维码 |
 
-## 服务与定价
+## 💰 服务定价
 
-- 🏭 **工厂/企业网站搭建** — ¥299起
-- 🤖 **AI工具落地服务** — ¥199起
-- 📊 **电商运营咨询** — ¥99起
+| 服务 | 价格 |
+|------|------|
+| 🏭 工厂/企业网站搭建 | ¥99起 |
+| 🤖 AI工具落地服务 | ¥49起 |
+| 📊 电商运营咨询 | ¥29起 |
 
-## 部署
+🎉 **开业首单5折，限前5名**
 
-本网站部署在 Cloudflare Pages，关联 GitHub 仓库自动部署。
-
-## 联系方式
+## 📞 联系方式
 
 - 微信：li3517568142
 - 邮箱：li591129@126.com
