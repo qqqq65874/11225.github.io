@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI电商选品分析 | 数据驱动选品决策 | 李星华</title>
+  <meta name="description" content="30+维度参数对比，帮你找到高利润蓝海商品。AI辅助选品分析服务，¥99起/品类。" />
+  <style>
+    :root {
+      --bg: #0a0f1e; --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #10b981; --accent2: #059669; --blue: #3b82f6;
+      --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.06), transparent 50%);
+      color: var(--text); line-height: 1.6;
+    }
+    .container { width: min(100% - 36px, 1000px); margin: 0 auto; }
+
+    /* Hero */
+    .hero {
+      text-align: center; padding: 48px 20px 36px;
+    }
+    .hero-badge {
+      display: inline-block; padding: 6px 16px; border-radius: 99px;
+      background: rgba(16,185,129,0.15); color: var(--accent);
+      font-weight: 700; font-size: 0.85rem; margin-bottom: 14px;
+    }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 10px; }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub { color: var(--muted); max-width: 540px; margin: 0 auto 20px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      border-radius: 14px; font-weight: 700; font-size: 1rem; text-decoration: none;
+      cursor: pointer; border: none; transition: all .25s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #10b981, #059669); color: #fff;
+      box-shadow: 0 8px 30px rgba(16,185,129,0.28);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    /* Demo Table */
+    .demo-section { margin-bottom: 28px; }
+    .section-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+    .section-sub { color: var(--muted); margin-bottom: 18px; font-size: 0.9rem; }
+    .table-wrap {
+      overflow-x: auto; border-radius: 16px; border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 800px; }
+    th {
+      background: rgba(255,255,255,0.05); padding: 14px 12px; text-align: left;
+      font-weight: 700; white-space: nowrap; position: sticky; top: 0;
+    }
+    td { padding: 12px; border-top: 1px solid var(--border); white-space: nowrap; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .score-high { color: #22c55e; font-weight: 700; }
+    .score-mid { color: #f59e0b; font-weight: 700; }
+    .score-low { color: #ef4444; font-weight: 700; }
+    .tag-sm { padding: 3px 8px; border-radius: 99px; font-size: 0.72rem; font-weight: 600; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #ef4444; }
+    .tag-good { background: rgba(34,197,94,0.12); color: #22c55e; }
+    .tag-watch { background: rgba(245,158,11,0.12); color: #f59e0b; }
+
+    /* Insights */
+    .insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+    .insight-card {
+      padding: 20px; border-radius: 16px; background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .insight-card h4 { font-weight: 700; margin-bottom: 6px; }
+    .insight-card p { color: var(--muted); font-size: 0.85rem; }
+
+    /* Methodology */
+    .method { margin-bottom: 28px; }
+    .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .method-item {
+      padding: 18px; border-radius: 14px; background: var(--surface);
+      border: 1px solid var(--border); text-align: center;
+    }
+    .method-num {
+      width: 32px; height: 32px; border-radius: 50%; display: inline-flex;
+      align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;
+      background: rgba(16,185,129,0.15); color: var(--accent); margin-bottom: 8px;
+    }
+    .method-item h4 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .method-item p { color: var(--muted); font-size: 0.78rem; }
+
+    /* Service */
+    .service-cta {
+      text-align: center; padding: 36px; border-radius: 20px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(5,150,105,0.04));
+      border: 1px solid rgba(16,185,129,0.15);
+    }
+    .service-cta h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .service-cta p { color: var(--muted); margin-bottom: 14px; }
+
+    footer { text-align: center; padding: 20px 0; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border); margin-top: 20px; }
+
+    @media (max-width: 700px) {
+      .insights-grid, .method-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-badge">📊 数据驱动 · AI辅助</div>
+      <h1>电商选品，<span>用数据说话</span></h1>
+      <p class="hero-sub">
+        别再凭感觉选品了。我帮你从30+维度对比分析，找到利润空间大、竞争适中的蓝海商品。
+      </p>
+      <a class="btn btn-primary" href="#service">📊 让我帮你分析一个品类 →</a>
+    </div>
+
+    <!-- Live Demo: 数码配件选品对比 -->
+    <div class="demo-section">
+      <h2 class="section-title">🔬 真实分析案例：Type-C拓展坞市场</h2>
+      <p class="section-sub">以下为2026年6月某电商平台真实数据（部分脱敏），展示了我的分析维度和结论。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>商品</th>
+              <th>价格(¥)</th>
+              <th>月销量</th>
+              <th>毛利(≈)</th>
+              <th>竞争度</th>
+              <th>评分</th>
+              <th>退货率</th>
+              <th>SEO热度</th>
+              <th>综合得分</th>
+              <th>建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>7合1 USB-C Hub</strong><br><span style="color:var(--muted);font-size:0.75rem;">品牌A</span></td>
+              <td>89</td>
+              <td>8,200</td>
+              <td class="score-high">42%</td>
+              <td>中高</td>
+              <td>4.7</td>
+              <td>3.2%</td>
+              <td>🔥 8.5K</td>
+              <td class="score-high"><strong>87</strong></td>
+              <td><span class="tag-sm tag-hot">🔥 爆款</span></td>
+            </tr>
+            <tr>
+              <td><strong>5合1 Type-C扩展坞</strong><br><span style="color:var(--muted);font-size:0.75rem;">品牌B</span></td>
+              <td>59</td>
+              <td>15,300</td>
+              <td class="score-mid">28%</td>
+              <td>高</td>
+              <td>4.5</td>
+              <td>5.1%</td>
+              <td>🔥 12K</td>
+              <td class="score-mid"><strong>72</strong></td>
+              <td><span class="tag-sm tag-watch">⚠ 红海</span></td>
+            </tr>
+            <tr>
+              <td><strong>12合1 雷电3扩展坞</strong><br><span style="color:var(--muted);font-size:0.75rem;">品牌C</span></td>
+              <td>299</td>
+              <td>1,200</td>
+              <td class="score-high">55%</td>
+              <td>低</td>
+              <td>4.8</td>
+              <td>1.8%</td>
+              <td>📈 2.2K</td>
+              <td class="score-high"><strong>91</strong></td>
+              <td><span class="tag-sm tag-good">💰 蓝海</span></td>
+            </tr>
+            <tr>
+              <td><strong>4合1 迷你USB-C适配器</strong><br><span style="color:var(--muted);font-size:0.75rem;">品牌D</span></td>
+              <td>35</td>
+              <td>22,000</td>
+              <td class="score-low">15%</td>
+              <td>极高</td>
+              <td>4.3</td>
+              <td>6.8%</td>
+              <td>🔥 18K</td>
+              <td class="score-low"><strong>51</strong></td>
+              <td><span class="tag-sm tag-watch">❌ 避开</span></td>
+            </tr>
+            <tr>
+              <td><strong>14合1 雷电4扩展坞</strong><br><span style="color:var(--muted);font-size:0.75rem;">品牌E</span></td>
+              <td>499</td>
+              <td>680</td>
+              <td class="score-high">48%</td>
+              <td>低</td>
+              <td>4.9</td>
+              <td>0.9%</td>
+              <td>📈 1.5K</td>
+              <td class="score-high"><strong>88</strong></td>
+              <td><span class="tag-sm tag-good">💰 蓝海</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Key Insights -->
+    <div class="insights-grid">
+      <div class="insight-card">
+        <h4>💡 发现1：高端蓝海</h4>
+        <p>12合1以上雷电扩展坞（¥200-500）竞争低、毛利高（40-55%），但需要供应链能力。</p>
+      </div>
+      <div class="insight-card">
+        <h4>💡 发现2：低价红海</h4>
+        <p>4-5合1低端产品（¥35-59）月销过万但毛利极薄，价格战激烈，新手慎入。</p>
+      </div>
+      <div class="insight-card">
+        <h4>💡 发现3：7合1甜蜜点</h4>
+        <p>7-8合1中端产品（¥80-120）兼顾毛利和销量，是当前最优入局区间。</p>
+      </div>
+    </div>
+
+    <!-- Methodology -->
+    <div class="method">
+      <h2 class="section-title">🧠 我的分析方法</h2>
+      <p class="section-sub">不是拍脑袋，是系统化数据对比</p>
+      <div class="method-grid">
+        <div class="method-item">
+          <div class="method-num">1</div>
+          <h4>平台数据采集</h4>
+          <p>抓取销量、价格、评价、店铺数据</p>
+        </div>
+        <div class="method-item">
+          <div class="method-num">2</div>
+          <h4>多维参数建模</h4>
+          <p>30+维度：毛利、竞争、趋势、退货率</p>
+        </div>
+        <div class="method-item">
+          <div class="method-num">3</div>
+          <h4>AI辅助分析</h4>
+          <p>用AI工具交叉验证，发现隐藏信息差</p>
+        </div>
+        <div class="method-item">
+          <div class="method-num">4</div>
+          <h4>输出决策报告</h4>
+          <p>给你清晰结论：做不做、怎么做</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service CTA -->
+    <div class="service-cta" id="service">
+      <h2>📊 让我帮你分析一个品类</h2>
+      <p>告诉我你想做的品类，我帮你做一套完整的选品分析报告。<br>¥99/品类，含数据对比表 + 选品建议 + 定价策略。</p>
+      <p style="font-size:1.15rem;font-weight:800;margin-bottom:14px;">📱 微信：li3517568142</p>
+      <a class="btn btn-primary" href="index.html#contact">📱 加微信发品类名称 →</a>
+      <p style="margin-top:12px;font-size:0.85rem;color:var(--muted);">
+        💡 先付一半定金，报告交付后付尾款 · 3天内交付
+      </p>
+    </div>
+
+    <footer>
+      © 2026 李星华 · AI电商选品分析 · 数据驱动，科学选品
+    </footer>
+  </div>
+</body>
+</html>

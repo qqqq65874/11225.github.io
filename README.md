@@ -1,47 +1,28 @@
-# Cloudflare Pages 部署说明
-
-本项目是一个静态个人简介网页，包含 `index.html`、`avatar.jpg` 和 `wechat-qrcode.jpg`。
+# 李星华 — 个人商业服务网站
 
 ## 网站结构
 
-- `index.html` — 网站首页
-- `avatar.jpg` — 头像图片
-- `wechat-qrcode.jpg` — 微信二维码图片
+| 文件 | 说明 |
+|------|------|
+| `index.html` | 主站 — 个人品牌 + 服务展示 + 案例 + 联系方式 |
+| `factory-website.html` | 工厂网站搭建专项服务页（¥299起） |
+| `ai-selection-tool.html` | AI电商选品分析工具演示页（¥99起） |
+| `AI赚钱案例.md` | AI变现方式参考合集 |
+| `avatar.jpg` | 头像 |
+| `wechat-qrcode.jpg` | 微信二维码 |
 
-## 部署步骤
+## 服务与定价
 
-1. 创建 Git 仓库
-   ```bash
-   cd "c:\Users\Administrator\Desktop\my web"
-   git init
-   git add .
-   git commit -m "初始提交"
-   ```
+- 🏭 **工厂/企业网站搭建** — ¥299起
+- 🤖 **AI工具落地服务** — ¥199起
+- 📊 **电商运营咨询** — ¥99起
 
-2. 推送到 GitHub
-   - 在 GitHub 上创建一个新仓库
-   - 将本地仓库与 GitHub 仓库关联并推送
-   ```bash
-   git remote add origin <your-github-repo-url>
-   git branch -M main
-   git push -u origin main
-   ```
+## 部署
 
-3. 在 Cloudflare Pages 上配置
-   - 登录 Cloudflare 仪表盘
-   - 进入 Pages，选择“创建项目”
-   - 连接到你的 GitHub 仓库
-   - 部署设置：
-     - Branch：`main`（或你使用的分支）
-     - Framework preset：`None` / 无
-     - Build command：留空
-     - Build output directory：留空或填 `.`
+本网站部署在 Cloudflare Pages，关联 GitHub 仓库自动部署。
 
-4. 发布
-   - 点击“保存并部署”
-   - 部署完成后，访问 Cloudflare Pages 提供的站点 URL
+## 联系方式
 
-## 注意事项
-
-- 图片使用相对路径引用，确保 `avatar.jpg` 和 `wechat-qrcode.jpg` 都在站点根目录。
-- 如果你想更改姓名、内容或图片，只需编辑 `index.html` 并重新提交到 GitHub。
+- 微信：li3517568142
+- 邮箱：li591129@126.com
+- 地址：河南省郑州市登封市

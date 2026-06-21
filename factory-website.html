@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>工厂网站搭建 | ¥299起 · 7天上线 | 李星华</title>
+  <meta name="description" content="专为中小工厂提供高性价比网站搭建服务。响应式设计、含部署、SEO优化，¥299起，7天交付。郑州地区可线下沟通。" />
+  <style>
+    :root {
+      --bg: #0b1120; --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #f97316; --accent2: #ef4444; --blue: #3b82f6;
+      --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.06);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.06), transparent 50%);
+      color: var(--text); line-height: 1.6;
+    }
+    .container { width: min(100% - 36px, 960px); margin: 0 auto; }
+
+    /* Hero */
+    .hero {
+      text-align: center; padding: 50px 20px 40px;
+    }
+    .hero-badge {
+      display: inline-block; padding: 6px 16px; border-radius: 99px;
+      background: rgba(249,115,22,0.15); color: var(--accent);
+      font-weight: 700; font-size: 0.85rem; margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; line-height: 1.25;
+      letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-subtitle {
+      font-size: 1.1rem; color: var(--muted); max-width: 560px; margin: 0 auto 24px;
+    }
+    .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      border-radius: 14px; font-weight: 700; font-size: 1rem; text-decoration: none;
+      cursor: pointer; border: none; transition: all .25s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f97316, #ef4444); color: #fff;
+      box-shadow: 0 8px 30px rgba(249,115,22,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(249,115,22,0.4); }
+    .btn-green {
+      background: linear-gradient(135deg, #07c160, #06ad56); color: #fff;
+      box-shadow: 0 8px 28px rgba(7,193,96,0.28);
+    }
+    .btn-green:hover { transform: translateY(-2px); }
+
+    /* Pain Points */
+    .pain-section {
+      padding: 30px; border-radius: 20px; background: var(--surface);
+      border: 1px solid var(--border); margin-bottom: 32px;
+    }
+    .pain-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 18px; text-align: center; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pain-item {
+      padding: 16px 18px; border-radius: 14px; background: rgba(239,68,68,0.04);
+      border: 1px solid rgba(239,68,68,0.1); display: flex; gap: 10px; align-items: flex-start;
+    }
+    .pain-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .pain-text strong { display: block; margin-bottom: 2px; }
+    .pain-text span { color: var(--muted); font-size: 0.85rem; }
+
+    /* Solution */
+    .solution-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .solution-card {
+      padding: 24px; border-radius: 18px; background: var(--surface);
+      border: 1px solid var(--border); text-align: center;
+    }
+    .solution-icon { font-size: 2.2rem; margin-bottom: 10px; }
+    .solution-card h3 { font-weight: 700; margin-bottom: 6px; }
+    .solution-card p { color: var(--muted); font-size: 0.88rem; }
+
+    /* Packages */
+    .section-title { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 6px; }
+    .section-sub { color: var(--muted); text-align: center; margin-bottom: 20px; font-size: 0.9rem; }
+    .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .pkg-card {
+      padding: 26px; border-radius: 18px; background: var(--surface);
+      border: 1px solid var(--border); transition: all .3s;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .pkg-card.popular {
+      border-color: rgba(249,115,22,0.4);
+      background: linear-gradient(180deg, rgba(249,115,22,0.06), rgba(239,68,68,0.02));
+      position: relative;
+    }
+    .pkg-badge {
+      position: absolute; top: -12px; right: 20px;
+      padding: 5px 14px; border-radius: 99px;
+      background: linear-gradient(135deg, #f97316, #ef4444); color: #fff;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .pkg-card:hover { transform: translateY(-3px); }
+    .pkg-name { font-weight: 800; font-size: 1.1rem; }
+    .pkg-price { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .pkg-price small { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+    .pkg-desc { color: var(--muted); font-size: 0.85rem; }
+    .pkg-features { list-style: none; font-size: 0.85rem; color: var(--muted); }
+    .pkg-features li { padding: 5px 0; padding-left: 20px; position: relative; }
+    .pkg-features li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+    .pkg-features li.no::before { content: "×"; color: #ef4444; }
+    .pkg-cta {
+      display: block; text-align: center; padding: 12px; border-radius: 12px;
+      font-weight: 700; text-decoration: none; margin-top: auto;
+    }
+    .pkg-cta.primary { background: linear-gradient(135deg, #f97316, #ef4444); color: #fff; }
+    .pkg-cta.secondary { background: var(--surface-strong, rgba(255,255,255,0.06)); color: var(--text); border: 1px solid var(--border); }
+
+    /* Process */
+    .process { margin-bottom: 32px; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .process-step { text-align: center; padding: 18px; }
+    .process-num {
+      width: 40px; height: 40px; border-radius: 50%; display: inline-flex;
+      align-items: center; justify-content: center; font-weight: 800;
+      background: rgba(249,115,22,0.15); color: var(--accent); margin-bottom: 8px;
+    }
+    .process-step h4 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .process-step p { color: var(--muted); font-size: 0.78rem; }
+
+    /* FAQ */
+    .faq { margin-bottom: 32px; }
+    .faq-item {
+      padding: 18px; border-radius: 14px; background: var(--surface);
+      border: 1px solid var(--border); margin-bottom: 10px;
+    }
+    .faq-item h4 { font-weight: 700; margin-bottom: 4px; }
+    .faq-item p { color: var(--muted); font-size: 0.88rem; }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center; padding: 40px; border-radius: 20px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(239,68,68,0.04));
+      border: 1px solid rgba(249,115,22,0.15); margin-bottom: 32px;
+    }
+    .final-cta h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+    .final-cta p { color: var(--muted); margin-bottom: 18px; }
+
+    footer { text-align: center; padding: 20px 0; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 700px) {
+      .pain-grid, .packages-grid, .solution-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-badge">🔥 学生创业 · 限时特价</div>
+      <h1>你的工厂还<span>没有网站</span>？<br>¥299起，7天上线</h1>
+      <p class="hero-subtitle">
+        专为中小工厂打造——手机电脑都能看、百度搜得到、客户找得着你。
+        不用懂技术，把需求告诉我，剩下我来。
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-green" href="#contact-cta">📱 加微信发需求</a>
+        <a class="btn btn-primary" href="#packages">💰 查看套餐</a>
+      </div>
+    </div>
+
+    <!-- Pain Points -->
+    <div class="pain-section">
+      <h2>😣 你的工厂是不是也这样？</h2>
+      <div class="pain-grid">
+        <div class="pain-item">
+          <div class="pain-icon">❌</div>
+          <div class="pain-text"><strong>客户找不到你</strong><span>只靠朋友圈发产品图，新客户搜不到你的工厂信息</span></div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">❌</div>
+          <div class="pain-text"><strong>看起来不专业</strong><span>没官网，客户觉得规模小、不正规，不敢下大单</span></div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">❌</div>
+          <div class="pain-text"><strong>同行有网站你没有</strong><span>隔壁厂有官网、有百度收录，客户先联系他们</span></div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">❌</div>
+          <div class="pain-text"><strong>找建站公司太贵</strong><span>动不动报价5000+，维护还要另收费，小厂根本扛不住</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution -->
+    <h2 class="section-title">✅ 我能帮你解决</h2>
+    <p class="section-sub">一个像样的网站，是工厂最基础的门面</p>
+    <div class="solution-grid">
+      <div class="solution-card">
+        <div class="solution-icon">📱</div>
+        <h3>手机+电脑都能看</h3>
+        <p>响应式设计，客户用手机微信打开也一样好看</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-icon">🔍</div>
+        <h3>百度/谷歌能搜到</h3>
+        <p>基础SEO优化，让你的工厂信息被搜索引擎收录</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-icon">⚡</div>
+        <h3>加载快、访问稳</h3>
+        <p>Cloudflare全球加速，国内外都能快速打开</p>
+      </div>
+    </div>
+
+    <!-- Packages -->
+    <h2 class="section-title" id="packages">📦 建站套餐</h2>
+    <p class="section-sub">明码标价，无隐藏费用。所有套餐含1年免费维护。</p>
+    <div class="packages-grid">
+      <!-- 基础版 -->
+      <div class="pkg-card">
+        <div class="pkg-name">🌱 基础版</div>
+        <div class="pkg-price">¥299</div>
+        <p class="pkg-desc">单页面展示站，适合刚起步的小厂</p>
+        <ul class="pkg-features">
+          <li>1个页面（首页+产品展示）</li>
+          <li>响应式设计</li>
+          <li>域名注册协助</li>
+          <li>Cloudflare部署</li>
+          <li>基础SEO设置</li>
+          <li>1年维护支持</li>
+          <li class="no">后台管理系统</li>
+          <li class="no">多页面</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact-cta">选这个 →</a>
+      </div>
+      <!-- 标准版 -->
+      <div class="pkg-card popular">
+        <div class="pkg-badge">🔥 推荐</div>
+        <div class="pkg-name">🏭 标准版</div>
+        <div class="pkg-price">¥599</div>
+        <p class="pkg-desc">多页面企业站，含产品展示和联系方式</p>
+        <ul class="pkg-features">
+          <li>最多5个页面</li>
+          <li>首页 + 产品页 + 关于我们 + 联系</li>
+          <li>响应式设计</li>
+          <li>域名注册协助</li>
+          <li>Cloudflare部署</li>
+          <li>SEO关键词优化</li>
+          <li>产品图片展示优化</li>
+          <li>1年维护支持</li>
+          <li class="no">后台管理系统</li>
+        </ul>
+        <a class="pkg-cta primary" href="#contact-cta">选这个 →</a>
+      </div>
+      <!-- 高级版 -->
+      <div class="pkg-card">
+        <div class="pkg-name">🚀 高级版</div>
+        <div class="pkg-price">¥999</div>
+        <p class="pkg-desc">含后台管理，可自主更新产品和内容</p>
+        <ul class="pkg-features">
+          <li>多页面（不限页数）</li>
+          <li>全部标准版功能</li>
+          <li>后台内容管理系统</li>
+          <li>产品分类管理</li>
+          <li>联系表单</li>
+          <li>百度统计接入</li>
+          <li>1年维护 + 内容更新指导</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact-cta">选这个 →</a>
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div class="process">
+      <h2 class="section-title">🔄 合作流程</h2>
+      <p class="section-sub">简单四步，不费心</p>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-num">1</div>
+          <h4>加微信聊需求</h4>
+          <p>告诉我你工厂做什么产品、想要什么风格</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <h4>确认方案报价</h4>
+          <p>我出方案和报价，你觉得合适再付定金</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <h4>开发上线</h4>
+          <p>7天内完成初版，你验收确认后上线</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">4</div>
+          <h4>交付+维护</h4>
+          <p>付尾款，后续1年免费技术支持</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h2 class="section-title">🙋 常见问题</h2>
+      <p class="section-sub">你可能想问的</p>
+      <div class="faq-item">
+        <h4>Q: 我不会电脑，怎么给你资料？</h4>
+        <p>A: 微信发文字、图片就行。产品照片、文字介绍发给我，我来整理上线。</p>
+      </div>
+      <div class="faq-item">
+        <h4>Q: 域名是什么？我要买吗？</h4>
+        <p>A: 域名就是网址（比如 www.你的工厂.com）。我帮你选、帮你买，费用另算（一般50-80元/年）。也可以用免费域名。</p>
+      </div>
+      <div class="faq-item">
+        <h4>Q: 做好了以后怎么改内容？</h4>
+        <p>A: 简单修改（改电话、加产品）在维护期免费帮你改。高级版有后台可以自己改。想加页面另报价。</p>
+      </div>
+      <div class="faq-item">
+        <h4>Q: 我在郑州/登封，能见面聊吗？</h4>
+        <p>A: 可以！登封本地可以约时间当面沟通。外地微信/电话沟通也完全没问题。</p>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="final-cta" id="contact-cta">
+      <h2>📞 别让你的工厂输在门面上</h2>
+      <p>加我微信，把需求发过来。能接就报价，接不了直说，不绕弯子。</p>
+      <p style="font-size:1.2rem;font-weight:800;margin-bottom:12px;">📱 微信：li3517568142</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn-green" href="https://weixin.qq.com/" target="_blank">📱 打开微信加好友</a>
+        <a class="btn btn-primary" href="mailto:li591129@126.com">📧 发邮件咨询</a>
+      </div>
+      <p style="margin-top:14px;font-size:0.85rem;color:var(--muted);">
+        💡 支持先付定金、交付后付尾款 · 郑州登封可线下沟通
+      </p>
+    </div>
+
+    <footer>
+      © 2026 李星华 · 专注工厂网站搭建 · 学生创业，靠谱交付
+    </footer>
+  </div>
+</body>
+</html>
