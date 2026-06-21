@@ -123,6 +123,30 @@
       transition: transform .3s;
     }
     .demo-strip-card:hover .demo-strip-arrow { transform: translateX(6px); }
+    /* Promo Banner */
+    .promo-banner {
+      display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
+      padding: 18px 24px; margin-bottom: 36px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(239,68,68,0.08));
+      border: 2px dashed rgba(245,158,11,0.4); text-align: center;
+      animation: promo-pulse 2s ease-in-out infinite;
+    }
+    @keyframes promo-pulse {
+      0%, 100% { border-color: rgba(245,158,11,0.4); box-shadow: 0 0 20px rgba(245,158,11,0.05); }
+      50% { border-color: rgba(245,158,11,0.7); box-shadow: 0 0 30px rgba(245,158,11,0.12); }
+    }
+    .promo-banner .promo-icon { font-size: 1.6rem; }
+    .promo-banner .promo-text { font-weight: 800; font-size: 1.05rem; color: #fbbf24; }
+    .promo-banner .promo-sub { font-size: 0.85rem; color: var(--muted); }
+    .promo-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 99px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff;
+      font-size: 0.72rem; font-weight: 700; animation: badge-glow 1.5s ease-in-out infinite;
+    }
+    @keyframes badge-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(245,158,11,0.4); }
+      50% { box-shadow: 0 0 18px rgba(245,158,11,0.7); }
+    }
     .live-badge {
       display: inline-block; padding: 2px 8px; border-radius: 99px;
       background: rgba(34,197,94,0.15); color: #22c55e; font-size: 0.7rem;
@@ -283,7 +307,7 @@
       </div>
       <div class="hero-visual">
         <div class="hero-card">
-          <div class="hero-card-title">📋 今日可接需求</div>
+          <div class="hero-card-title">📋 今日可接需求 <span class="promo-badge">前3名8折</span></div>
           <div class="hero-card-item"><span class="hero-card-check">✓</span> 工厂/企业网站搭建</div>
           <div class="hero-card-item"><span class="hero-card-check">✓</span> AI工具部署与培训</div>
           <div class="hero-card-item"><span class="hero-card-check">✓</span> 电商选品数据分析</div>
@@ -313,6 +337,13 @@
     </section>
 
     <!-- Services -->
+    <!-- 🔥 限时优惠 -->
+    <div class="promo-banner reveal">
+      <span class="promo-icon">🔥</span>
+      <span class="promo-text">前3名下单享8折优惠！</span>
+      <span class="promo-sub">学生创业口碑积累中，限时特惠，先到先得</span>
+      <span class="promo-badge">仅剩3席</span>
+    </div>
     <section id="services" class="reveal">
       <div class="section-label">服务与定价</div>
       <h2 class="section-title">我能帮你做什么</h2>
