@@ -263,6 +263,24 @@
       .hero-actions .btn { justify-content: center; }
       .trust-grid { grid-template-columns: 1fr; }
     }
+
+    /* Sticky Mobile CTA */
+    .mobile-cta-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      padding: 10px 16px; background: rgba(10,15,30,0.95); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-cta-bar-inner { display: flex; gap: 10px; align-items: center; }
+    .mobile-cta-bar .btn { flex: 1; justify-content: center; padding: 12px; font-size: 0.9rem; }
+    .mobile-cta-msg {
+      font-size: 0.75rem; color: var(--muted); white-space: nowrap;
+      animation: cta-blink 2s ease-in-out infinite;
+    }
+    @keyframes cta-blink { 0%,100%{opacity:0.7} 50%{opacity:1} }
+    @media (max-width: 860px) {
+      .mobile-cta-bar { display: block; }
+      body { padding-bottom: 80px; }
+    }
   </style>
 </head>
 <body>
@@ -468,8 +486,10 @@
 
     <!-- CTA -->
     <section class="cta-section reveal">
-      <h2>📞 先聊需求，再决定要不要合作</h2>
-      <p>加我微信，说说你的需求。我能做就报价，做不了直说，绝不浪费你时间。</p>
+      <h2>🎁 免费帮你诊断线上形象</h2>
+      <p>加我微信，把你的工厂/产品资料发给我。我免费帮你看看：<br>
+      <strong>① 你现在线上展示有什么问题 ② 同行是怎么做的 ③ 预算多少够用</strong><br>
+      纯诊断，不收费，不骚扰。觉得有用再聊合作。</p>
       <div class="cta-buttons">
         <a class="btn btn-wx" href="#contact">📱 加微信：li3517568142</a>
         <a class="btn btn-outline" href="mailto:li591129@126.com">📧 发邮件咨询</a>
@@ -516,5 +536,13 @@
       });
     });
   </script>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="mobile-cta-bar">
+    <div class="mobile-cta-bar-inner">
+      <span class="mobile-cta-msg">🔥 前3名8折</span>
+      <a class="btn btn-wx" href="#contact">📱 加微信咨询</a>
+    </div>
+  </div>
 </body>
 </html>
