@@ -94,6 +94,43 @@
       box-shadow: 0 8px 28px rgba(7,193,96,0.28);
     }
     .btn-wx:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(7,193,96,0.36); }
+    .btn-demo {
+      background: linear-gradient(135deg, #f59e0b, #f97316); color: #fff;
+      box-shadow: 0 8px 28px rgba(245,158,11,0.28);
+    }
+    .btn-demo:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(245,158,11,0.42); }
+    /* Demo Showcase Strip */
+    .demo-strip {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 36px;
+    }
+    .demo-strip-card {
+      display: flex; align-items: center; gap: 18px; padding: 24px 28px;
+      border-radius: 18px; background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(249,115,22,0.03));
+      border: 2px solid rgba(245,158,11,0.25); text-decoration: none; color: inherit;
+      transition: all .3s; position: relative; overflow: hidden;
+    }
+    .demo-strip-card::after {
+      content: ""; position: absolute; top: -30px; right: -30px; width: 80px; height: 80px;
+      background: rgba(245,158,11,0.12); border-radius: 50%; pointer-events: none;
+    }
+    .demo-strip-card:hover { border-color: rgba(245,158,11,0.55); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(245,158,11,0.15); }
+    .demo-strip-icon { font-size: 2.2rem; flex-shrink: 0; position: relative; z-index: 1; }
+    .demo-strip-info { flex: 1; position: relative; z-index: 1; }
+    .demo-strip-info h3 { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .demo-strip-info p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+    .demo-strip-arrow {
+      font-size: 1.4rem; color: var(--gold); flex-shrink: 0; position: relative; z-index: 1;
+      transition: transform .3s;
+    }
+    .demo-strip-card:hover .demo-strip-arrow { transform: translateX(6px); }
+    .live-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 99px;
+      background: rgba(34,197,94,0.15); color: #22c55e; font-size: 0.7rem;
+      font-weight: 700; margin-left: 6px; vertical-align: middle;
+    }
+    @media (max-width: 600px) {
+      .demo-strip { grid-template-columns: 1fr; }
+    }
     .hero-visual {
       display: flex; flex-direction: column; align-items: center; gap: 14px;
     }
@@ -255,6 +292,26 @@
       </div>
     </section>
 
+    <!-- Live Demos Quick Access -->
+    <section class="demo-strip reveal">
+      <a href="factory-website.html" class="demo-strip-card">
+        <div class="demo-strip-icon">🏭</div>
+        <div class="demo-strip-info">
+          <h3>工厂企业网站演示 <span class="live-badge">● LIVE</span></h3>
+          <p>响应式官网示例 · 产品展示 · 企业形象 · 7天交付</p>
+        </div>
+        <div class="demo-strip-arrow">→</div>
+      </a>
+      <a href="ai-selection-tool.html" class="demo-strip-card">
+        <div class="demo-strip-icon">🤖</div>
+        <div class="demo-strip-info">
+          <h3>AI智能选品工具演示 <span class="live-badge">● LIVE</span></h3>
+          <p>30+参数维度 · 竞品对比 · 利润分析 · 数据驱动决策</p>
+        </div>
+        <div class="demo-strip-arrow">→</div>
+      </a>
+    </section>
+
     <!-- Services -->
     <section id="services" class="reveal">
       <div class="section-label">服务与定价</div>
@@ -275,6 +332,7 @@
             <li>7天内交付初版</li>
           </ul>
           <a class="btn btn-primary" href="#contact" style="width:100%;text-align:center;justify-content:center;">立即咨询 →</a>
+          <a class="btn btn-demo" href="factory-website.html" style="width:100%;text-align:center;justify-content:center;margin-top:8px;">🖥️ 查看演示网站 →</a>
         </div>
         <!-- Service 2 -->
         <div class="service-card">
@@ -313,11 +371,11 @@
       <h2 class="section-title">做过的项目</h2>
       <p class="section-desc">不是纸上谈兵，每一个项目都真实交付。</p>
       <div class="cases-grid">
-        <a href="factory-website.html" style="text-decoration:none;color:inherit;">
-        <div class="case-card">
+        <div class="case-card" style="position:relative;">
+          <a href="factory-website.html" style="text-decoration:none;color:inherit;display:block;">
           <div class="case-num">01</div>
-          <h3>工厂企业拓宽宣传 🔗</h3>
-          <p>为本地中型工厂搭建官方网站，统一展示产品线与联系方式，替代原有零散的微信朋友圈宣传方式。→ 点击查看专项服务</p>
+          <h3>工厂企业拓宽宣传</h3>
+          <p>为本地中型工厂搭建官方网站，统一展示产品线与联系方式，替代原有零散的微信朋友圈宣传方式。</p>
           <div class="case-result">
             <div class="case-metric"><div class="val">1周</div><div class="lbl">交付周期</div></div>
             <div class="case-metric"><div class="val">24/7</div><div class="lbl">在线展示</div></div>
@@ -326,13 +384,14 @@
           <div class="tags">
             <span class="tag">#AI落地</span><span class="tag">#网站搭建</span><span class="tag">#降本增效</span>
           </div>
+          </a>
+          <a class="btn btn-demo" href="factory-website.html" style="width:100%;text-align:center;justify-content:center;margin-top:12px;">🖥️ 查看演示网站 →</a>
         </div>
-        </a>
-        <a href="ai-selection-tool.html" style="text-decoration:none;color:inherit;">
-        <div class="case-card">
+        <div class="case-card" style="position:relative;">
+          <a href="ai-selection-tool.html" style="text-decoration:none;color:inherit;display:block;">
           <div class="case-num">02</div>
-          <h3>数码配件选品模型 🔗</h3>
-          <p>建立参数对比体系，挖掘数据线/拓展坞市场中的价格差与信息差，为选品决策提供数据支撑。→ 点击查看完整分析</p>
+          <h3>数码配件选品模型</h3>
+          <p>建立参数对比体系，挖掘数据线/拓展坞市场中的价格差与信息差，为选品决策提供数据支撑。</p>
           <div class="case-result">
             <div class="case-metric"><div class="val">30+</div><div class="lbl">对比维度</div></div>
             <div class="case-metric"><div class="val">50+</div><div class="lbl">分析商品</div></div>
@@ -341,8 +400,9 @@
           <div class="tags">
             <span class="tag">#选品分析</span><span class="tag">#参数党</span><span class="tag">#信息差</span>
           </div>
+          </a>
+          <a class="btn btn-demo" href="ai-selection-tool.html" style="width:100%;text-align:center;justify-content:center;margin-top:12px;">🤖 查看选品工具 →</a>
         </div>
-        </a>
       </div>
     </section>
 
