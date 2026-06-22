@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>利润计算分析报告 | ¥39/品 | 李星华</title>
+  <meta name="description" content="帮你算清商品真实利润：进货价+运费+佣金+广告+退货损耗。AI辅助分析报告，¥39/品，不做亏本买卖。" />
+  <style>
+    :root {
+      --bg: #0a0f1e; --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #10b981; --accent2: #059669;
+      --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.06), transparent 50%);
+      color: var(--text); line-height: 1.6;
+    }
+    .container { width: min(100% - 36px, 1000px); margin: 0 auto; }
+    .hero { text-align: center; padding: 48px 20px 36px; }
+    .hero-badge { display: inline-block; padding: 6px 16px; border-radius: 99px; background: rgba(16,185,129,0.15); color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 10px; }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub { color: var(--muted); max-width: 560px; margin: 0 auto 20px; font-size: 1.05rem; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; transition: all .25s; }
+    .btn-primary { background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 8px 30px rgba(16,185,129,0.28); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(16,185,129,0.4); }
+    .btn-green { background: linear-gradient(135deg, #07c160, #06ad56); color: #fff; box-shadow: 0 8px 28px rgba(7,193,96,0.28); }
+    .btn-green:hover { transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15); }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+    .section-title { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 6px; }
+    .section-sub { color: var(--muted); text-align: center; margin-bottom: 20px; font-size: 0.9rem; }
+
+    .pain-section { padding: 30px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 32px; }
+    .pain-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 18px; text-align: center; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pain-item { padding: 16px 18px; border-radius: 14px; background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.1); display: flex; gap: 10px; align-items: flex-start; }
+    .pain-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .pain-text strong { display: block; margin-bottom: 2px; }
+    .pain-text span { color: var(--muted); font-size: 0.85rem; }
+
+    .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .pkg-card { padding: 26px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); transition: all .3s; display: flex; flex-direction: column; gap: 14px; }
+    .pkg-card.popular { border-color: rgba(16,185,129,0.4); background: linear-gradient(180deg, rgba(16,185,129,0.06), rgba(5,150,105,0.02)); position: relative; }
+    .pkg-badge { position: absolute; top: -12px; right: 20px; padding: 5px 14px; border-radius: 99px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-size: 0.75rem; font-weight: 700; }
+    .pkg-card:hover { transform: translateY(-3px); }
+    .pkg-name { font-weight: 800; font-size: 1.1rem; }
+    .pkg-price { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .pkg-price small { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+    .pkg-desc { color: var(--muted); font-size: 0.85rem; }
+    .pkg-features { list-style: none; font-size: 0.85rem; color: var(--muted); flex: 1; }
+    .pkg-features li { padding: 5px 0; padding-left: 20px; position: relative; }
+    .pkg-features li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+    .pkg-features li.no::before { content: "×"; color: #ef4444; }
+    .pkg-cta { display: block; text-align: center; padding: 12px; border-radius: 12px; font-weight: 700; text-decoration: none; margin-top: auto; }
+    .pkg-cta.primary { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
+    .pkg-cta.secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+
+    .breakdown-card { padding: 28px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 28px; }
+    .breakdown-card h3 { font-weight: 800; margin-bottom: 14px; color: var(--accent); }
+    .breakdown-table { width: 100%; border-collapse: collapse; }
+    .breakdown-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    .breakdown-table td:last-child { text-align: right; font-weight: 700; }
+    .breakdown-table .total td { border-top: 2px solid rgba(16,185,129,0.5); font-size: 1.1rem; color: #22c55e; border-bottom: none; }
+    .breakdown-table .deduct td { color: #ef4444; }
+    .bar { height: 6px; border-radius: 3px; margin-top: 10px; }
+    .bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #10b981, #059669); }
+
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 32px; }
+    .process-step { text-align: center; padding: 18px; }
+    .process-num { width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; background: rgba(16,185,129,0.15); color: var(--accent); margin-bottom: 8px; }
+    .process-step h4 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .process-step p { color: var(--muted); font-size: 0.78rem; }
+
+    .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+    .insight-card { padding: 20px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); text-align: center; }
+    .insight-card .num { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .insight-card .lbl { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+
+    .final-cta { text-align: center; padding: 40px; border-radius: 20px; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(5,150,105,0.04)); border: 1px solid rgba(16,185,129,0.15); margin-bottom: 32px; }
+    .final-cta h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+    .final-cta p { color: var(--muted); margin-bottom: 18px; }
+
+    footer { text-align: center; padding: 20px 0; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 700px) {
+      .packages-grid, .pain-grid, .process-steps, .insight-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">📊 数据说话 · 拒绝亏本</div>
+      <h1>你的商品<span>真赚钱吗？</span></h1>
+      <p class="hero-sub">别被表面毛利骗了。我帮你把每项隐形成本算清楚，给出一份完整的利润分析报告。¥39/品。</p>
+      <a class="btn btn-primary" href="#packages">📊 看报告样例 →</a>
+    </div>
+
+    <div class="pain-section">
+      <h2>😣 你是不是也这样算账？</h2>
+      <div class="pain-grid">
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>只算进货价和售价</strong><span>运费、佣金、广告、退货这些隐形成本全漏了</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>觉得赚了其实亏了</strong><span>卖一单赚5块，退一单亏50，整体亏钱还不知道</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>定价拍脑袋</strong><span>看同行定多少就跟着定，不知道自己的盈亏平衡点</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>广告ROI不会算</strong><span>投了广告不知道赚不赚钱，ROI多少才是正的</span></div></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">📋 报告包含什么</h2>
+    <p class="section-sub">一份报告，把账算得明明白白</p>
+    <div class="breakdown-card">
+      <h3>📱 案例：一款手机壳的真实利润拆解</h3>
+      <table class="breakdown-table">
+        <tr><td>售价</td><td>¥39.90</td></tr>
+        <tr><td>进货成本</td><td style="color:#ef4444;">- ¥12.00</td></tr>
+        <tr><td>快递运费</td><td style="color:#ef4444;">- ¥3.50</td></tr>
+        <tr><td>平台佣金（5%）</td><td style="color:#ef4444;">- ¥2.00</td></tr>
+        <tr><td>包装耗材</td><td style="color:#ef4444;">- ¥1.20</td></tr>
+        <tr><td>推广分摊（10%）</td><td style="color:#ef4444;">- ¥4.00</td></tr>
+        <tr><td>退货损耗（3%）</td><td style="color:#ef4444;">- ¥1.20</td></tr>
+        <tr class="total"><td>💰 实际净利润</td><td>¥16.00</td></tr>
+      </table>
+      <div class="bar"><div class="bar-fill" style="width:40%;"></div></div>
+      <p style="color:var(--muted);font-size:0.82rem;margin-top:8px;">表面毛利 70%，实际净利 40%。如果不算退货和广告，你会高估 30% 的利润。</p>
+    </div>
+
+    <h2 class="section-title" id="packages">📦 分析报告套餐</h2>
+    <p class="section-sub">一份报告 = 一个品类的完整利润模型</p>
+    <div class="packages-grid">
+      <div class="pkg-card">
+        <div class="pkg-name">📊 单品分析</div>
+        <div class="pkg-price">¥39<small>/品</small></div>
+        <p class="pkg-desc">快速搞清一个产品赚不赚钱</p>
+        <ul class="pkg-features">
+          <li>全成本拆解（7-10项）</li>
+          <li>盈亏平衡点计算</li>
+          <li>定价策略建议</li>
+          <li>Excel利润模型表</li>
+          <li class="no">竞品利润对比</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact">选这个 →</a>
+      </div>
+      <div class="pkg-card popular">
+        <div class="pkg-badge">🔥 推荐</div>
+        <div class="pkg-name">📈 品类深度</div>
+        <div class="pkg-price">¥79<small>/品类</small></div>
+        <p class="pkg-desc">一个品类全分析，含竞品对比</p>
+        <ul class="pkg-features">
+          <li>全部单品分析内容</li>
+          <li>3个竞品利润对比</li>
+          <li>广告ROI阈值计算</li>
+          <li>价格弹性分析</li>
+          <li>优化建议清单</li>
+        </ul>
+        <a class="pkg-cta primary" href="#contact">选这个 →</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">🏪 店铺诊断</div>
+        <div class="pkg-price">¥149<small>/店</small></div>
+        <p class="pkg-desc">全店商品利润扫描</p>
+        <ul class="pkg-features">
+          <li>全店TOP20商品利润排名</li>
+          <li>识别"隐形亏本"商品</li>
+          <li>整体利润结构分析</li>
+          <li>优化优先排序</li>
+          <li>1次免费深度咨询</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact">选这个 →</a>
+      </div>
+    </div>
+
+    <h2 class="section-title">💡 不做分析的代价</h2>
+    <div class="insight-grid">
+      <div class="insight-card"><div class="num">68%</div><div class="lbl">的卖家低估了退货损耗</div></div>
+      <div class="insight-card"><div class="num">¥3.5万</div><div class="lbl">平均每个卖家年亏在"隐形亏本商品"上</div></div>
+      <div class="insight-card"><div class="num">1次</div><div class="lbl">分析就能避免80%的定价错误</div></div>
+    </div>
+
+    <h2 class="section-title">🔄 流程</h2>
+    <div class="process-steps">
+      <div class="process-step"><div class="process-num">1</div><h4>你发商品信息</h4><p>微信发产品链接或成本数据</p></div>
+      <div class="process-step"><div class="process-num">2</div><h4>我建利润模型</h4><p>用AI+模板拆解所有成本</p></div>
+      <div class="process-step"><div class="process-num">3</div><h4>出报告</h4><p>3天内交付Excel+PDF</p></div>
+      <div class="process-step"><div class="process-num">4</div><h4>解读+建议</h4><p>微信语音解读报告，给优化方向</p></div>
+    </div>
+
+    <div class="final-cta" id="contact">
+      <h2>📊 别再凭感觉定价了</h2>
+      <p>加微信，把你的商品链接发我。我先帮你算一个，你看报告值不值。</p>
+      <p style="font-size:1.2rem;font-weight:800;margin-bottom:14px;">📱 微信：li3517568142</p>
+      <a class="btn btn-green" href="index.html#contact">📱 加微信发商品 →</a>
+      <p style="margin-top:12px;font-size:0.85rem;color:var(--muted);">💡 先出报告后付款 · 报告不满意不收费</p>
+    </div>
+
+    <footer>© 2026 李星华 · 商品利润分析 · 算清账，不白忙</footer>
+  </div>
+</body>
+</html>

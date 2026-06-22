@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>工厂宣传视频脚本 | ¥29/条 | 李星华</title>
+  <meta name="description" content="帮工厂写抖音/快手短视频脚本。15秒展示产品亮点，含分镜+台词+拍摄建议。¥29/条，3条起接。" />
+  <style>
+    :root {
+      --bg: #0a0f1e; --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #f43f5e; --accent2: #e11d48;
+      --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(244,63,94,0.05), transparent 50%);
+      color: var(--text); line-height: 1.6;
+    }
+    .container { width: min(100% - 36px, 1000px); margin: 0 auto; }
+    .hero { text-align: center; padding: 48px 20px 36px; }
+    .hero-badge { display: inline-block; padding: 6px 16px; border-radius: 99px; background: rgba(244,63,94,0.15); color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 10px; }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub { color: var(--muted); max-width: 560px; margin: 0 auto 20px; font-size: 1.05rem; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; transition: all .25s; }
+    .btn-primary { background: linear-gradient(135deg, #f43f5e, #e11d48); color: #fff; box-shadow: 0 8px 30px rgba(244,63,94,0.28); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(244,63,94,0.4); }
+    .btn-green { background: linear-gradient(135deg, #07c160, #06ad56); color: #fff; box-shadow: 0 8px 28px rgba(7,193,96,0.28); }
+    .btn-green:hover { transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15); }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+    .section-title { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 6px; }
+    .section-sub { color: var(--muted); text-align: center; margin-bottom: 20px; font-size: 0.9rem; }
+
+    .pain-section { padding: 30px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 32px; }
+    .pain-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 18px; text-align: center; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pain-item { padding: 16px 18px; border-radius: 14px; background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.1); display: flex; gap: 10px; align-items: flex-start; }
+    .pain-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .pain-text strong { display: block; margin-bottom: 2px; }
+    .pain-text span { color: var(--muted); font-size: 0.85rem; }
+
+    .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .pkg-card { padding: 26px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); transition: all .3s; display: flex; flex-direction: column; gap: 14px; }
+    .pkg-card.popular { border-color: rgba(244,63,94,0.4); background: linear-gradient(180deg, rgba(244,63,94,0.06), rgba(225,29,72,0.02)); position: relative; }
+    .pkg-badge { position: absolute; top: -12px; right: 20px; padding: 5px 14px; border-radius: 99px; background: linear-gradient(135deg, #f43f5e, #e11d48); color: #fff; font-size: 0.75rem; font-weight: 700; }
+    .pkg-card:hover { transform: translateY(-3px); }
+    .pkg-name { font-weight: 800; font-size: 1.1rem; }
+    .pkg-price { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .pkg-price small { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+    .pkg-desc { color: var(--muted); font-size: 0.85rem; }
+    .pkg-features { list-style: none; font-size: 0.85rem; color: var(--muted); flex: 1; }
+    .pkg-features li { padding: 5px 0; padding-left: 20px; position: relative; }
+    .pkg-features li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+    .pkg-features li.no::before { content: "×"; color: #ef4444; }
+    .pkg-cta { display: block; text-align: center; padding: 12px; border-radius: 12px; font-weight: 700; text-decoration: none; margin-top: auto; }
+    .pkg-cta.primary { background: linear-gradient(135deg, #f43f5e, #e11d48); color: #fff; }
+    .pkg-cta.secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+
+    .script-demo { padding: 28px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 28px; }
+    .script-demo h3 { font-weight: 800; margin-bottom: 14px; color: var(--accent); }
+    .script-block { padding: 16px; border-radius: 12px; margin-bottom: 10px; background: rgba(255,255,255,0.02); border-left: 3px solid var(--accent); }
+    .script-block .time { color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
+    .script-block .shot { font-weight: 700; margin-bottom: 4px; }
+    .script-block .detail { color: var(--muted); font-size: 0.85rem; }
+
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 32px; }
+    .process-step { text-align: center; padding: 18px; }
+    .process-num { width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; background: rgba(244,63,94,0.15); color: var(--accent); margin-bottom: 8px; }
+    .process-step h4 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .process-step p { color: var(--muted); font-size: 0.78rem; }
+
+    .final-cta { text-align: center; padding: 40px; border-radius: 20px; background: linear-gradient(135deg, rgba(244,63,94,0.08), rgba(225,29,72,0.04)); border: 1px solid rgba(244,63,94,0.15); margin-bottom: 32px; }
+    .final-cta h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+    .final-cta p { color: var(--muted); margin-bottom: 18px; }
+
+    footer { text-align: center; padding: 20px 0; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 700px) {
+      .packages-grid, .pain-grid, .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">🎬 15秒出圈 · 工厂也需要流量</div>
+      <h1>你的工厂，<span>需要一个好视频</span></h1>
+      <p class="hero-sub">抖音/快手上15秒的工厂视频，比官网带来更多客户。我帮你写脚本+分镜，你拿手机拍就行。¥29/条。</p>
+      <a class="btn btn-primary" href="#script-demo">🎬 看脚本样例 →</a>
+    </div>
+
+    <div class="pain-section">
+      <h2>😣 工厂做短视频的痛</h2>
+      <div class="pain-grid">
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>不知道拍什么</strong><span>拿着手机对着机器转一圈就没了，没人看</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>拍出来像监控</strong><span>画面单调没节奏，发出去0赞0评论</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>请专业团队太贵</strong><span>一个视频报价3000+，小厂哪有钱天天拍</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>同行已经做起来了</strong><span>隔壁厂抖音几千粉丝，客户从抖音找过来，你还没开始</span></div></div>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="script-demo">📝 脚本样例</h2>
+    <p class="section-sub">以一家五金加工厂为例 —「一根螺丝的诞生」</p>
+    <div class="script-demo">
+      <div class="script-block">
+        <div class="time">⏱ 0-3秒</div>
+        <div class="shot">🎬 特写：成品螺丝慢镜头掉落</div>
+        <div class="detail">字幕：「你用的螺丝，可能是这样造出来的」| 配乐：节奏鼓点起</div>
+      </div>
+      <div class="script-block">
+        <div class="time">⏱ 3-8秒</div>
+        <div class="shot">🎬 中景：数控车床高速运转，金属屑飞溅</div>
+        <div class="detail">配音：「每天20万颗，精度0.01mm」| 画面叠加精度检测特写</div>
+      </div>
+      <div class="script-block">
+        <div class="time">⏱ 8-12秒</div>
+        <div class="shot">🎬 全景：工人质检+打包发货</div>
+        <div class="detail">配音：「郑州XX五金，12年老厂，合作300+客户」</div>
+      </div>
+      <div class="script-block">
+        <div class="time">⏱ 12-15秒</div>
+        <div class="shot">🎬 老板或员工面对镜头</div>
+        <div class="detail">台词：「需要螺丝？私信我报价」| 配乐：高潮收尾</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">📦 脚本套餐</h2>
+    <p class="section-sub">给你完整的拍摄"剧本"，对着拍就行</p>
+    <div class="packages-grid">
+      <div class="pkg-card">
+        <div class="pkg-name">📱 单品脚本</div>
+        <div class="pkg-price">¥29<small>/条</small></div>
+        <p class="pkg-desc">3条起接，单个产品展示</p>
+        <ul class="pkg-features">
+          <li>15-30秒完整分镜脚本</li>
+          <li>台词/字幕/配音建议</li>
+          <li>BGM推荐</li>
+          <li>拍摄角度示意图</li>
+          <li class="no">多产品系列</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact">选这个 →</a>
+      </div>
+      <div class="pkg-card popular">
+        <div class="pkg-badge">🔥 推荐</div>
+        <div class="pkg-name">🎥 工厂专辑</div>
+        <div class="pkg-price">¥99<small>/5条</small></div>
+        <p class="pkg-desc">5条系列视频，完整展示工厂</p>
+        <ul class="pkg-features">
+          <li>5条系列脚本（产品/车间/质检/发货/老板）</li>
+          <li>统一风格和文案调性</li>
+          <li>发布顺序和时间建议</li>
+          <li>话题标签推荐</li>
+        </ul>
+        <a class="pkg-cta primary" href="#contact">选这个 →</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">🏭 品牌升级</div>
+        <div class="pkg-price">¥199<small>/10条</small></div>
+        <p class="pkg-desc">10条脚本+账号定位</p>
+        <ul class="pkg-features">
+          <li>全部专辑内容</li>
+          <li>账号人设/定位分析</li>
+          <li>竞品账号分析</li>
+          <li>月度内容日历</li>
+          <li>1次免费修改</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact">选这个 →</a>
+      </div>
+    </div>
+
+    <h2 class="section-title">🔄 怎么合作</h2>
+    <div class="process-steps">
+      <div class="process-step"><div class="process-num">1</div><h4>告诉我产品</h4><p>微信说下做什么产品，想展示什么</p></div>
+      <div class="process-step"><div class="process-num">2</div><h4>我写脚本</h4><p>48小时内出完整分镜脚本</p></div>
+      <div class="process-step"><div class="process-num">3</div><h4>你审核</h4><p>不满意免费改</p></div>
+      <div class="process-step"><div class="process-num">4</div><h4>你拿手机拍</h4><p>照着脚本拍，一条过</p></div>
+    </div>
+
+    <div class="final-cta" id="contact">
+      <h2>🎬 让你的工厂被看见</h2>
+      <p>加微信，告诉我你工厂做什么产品。我帮你看看适合拍什么风格的视频。</p>
+      <p style="font-size:1.2rem;font-weight:800;margin-bottom:14px;">📱 微信：li3517568142</p>
+      <a class="btn btn-green" href="index.html#contact">📱 加微信聊脚本 →</a>
+      <p style="margin-top:12px;font-size:0.85rem;color:var(--muted);">💡 先出一个脚本看效果 · 满意再批量</p>
+    </div>
+
+    <footer>© 2026 李星华 · 工厂视频脚本 · 好产品要让人看见</footer>
+  </div>
+</body>
+</html>

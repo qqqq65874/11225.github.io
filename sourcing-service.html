@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>1688货源信息差服务 | ¥49/品 | 李星华</title>
+  <meta name="description" content="帮电商卖家在1688上找到最低价供应商。对比5家报价+起订量+质量评分，¥49/品。AI辅助全网比价。" />
+  <style>
+    :root {
+      --bg: #0a0f1e; --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #f59e0b; --accent2: #d97706;
+      --surface: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.05), transparent 50%);
+      color: var(--text); line-height: 1.6;
+    }
+    .container { width: min(100% - 36px, 1000px); margin: 0 auto; }
+    .hero { text-align: center; padding: 48px 20px 36px; }
+    .hero-badge { display: inline-block; padding: 6px 16px; border-radius: 99px; background: rgba(245,158,11,0.15); color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 10px; }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub { color: var(--muted); max-width: 560px; margin: 0 auto 20px; font-size: 1.05rem; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; transition: all .25s; }
+    .btn-primary { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; box-shadow: 0 8px 30px rgba(245,158,11,0.28); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(245,158,11,0.4); }
+    .btn-green { background: linear-gradient(135deg, #07c160, #06ad56); color: #fff; box-shadow: 0 8px 28px rgba(7,193,96,0.28); }
+    .btn-green:hover { transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15); }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+    .section-title { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 6px; }
+    .section-sub { color: var(--muted); text-align: center; margin-bottom: 20px; font-size: 0.9rem; }
+
+    .pain-section { padding: 30px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 32px; }
+    .pain-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 18px; text-align: center; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pain-item { padding: 16px 18px; border-radius: 14px; background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.1); display: flex; gap: 10px; align-items: flex-start; }
+    .pain-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .pain-text strong { display: block; margin-bottom: 2px; }
+    .pain-text span { color: var(--muted); font-size: 0.85rem; }
+
+    .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .pkg-card { padding: 26px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); transition: all .3s; display: flex; flex-direction: column; gap: 14px; }
+    .pkg-card.popular { border-color: rgba(245,158,11,0.4); background: linear-gradient(180deg, rgba(245,158,11,0.06), rgba(217,119,6,0.02)); position: relative; }
+    .pkg-badge { position: absolute; top: -12px; right: 20px; padding: 5px 14px; border-radius: 99px; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-size: 0.75rem; font-weight: 700; }
+    .pkg-card:hover { transform: translateY(-3px); }
+    .pkg-name { font-weight: 800; font-size: 1.1rem; }
+    .pkg-price { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .pkg-price small { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+    .pkg-desc { color: var(--muted); font-size: 0.85rem; }
+    .pkg-features { list-style: none; font-size: 0.85rem; color: var(--muted); flex: 1; }
+    .pkg-features li { padding: 5px 0; padding-left: 20px; position: relative; }
+    .pkg-features li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+    .pkg-features li.no::before { content: "×"; color: #ef4444; }
+    .pkg-cta { display: block; text-align: center; padding: 12px; border-radius: 12px; font-weight: 700; text-decoration: none; margin-top: auto; }
+    .pkg-cta.primary { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; }
+    .pkg-cta.secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+
+    .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--border); background: var(--surface); margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th { background: rgba(255,255,255,0.05); padding: 14px 12px; text-align: left; font-weight: 700; white-space: nowrap; }
+    td { padding: 12px; border-top: 1px solid var(--border); white-space: nowrap; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .best { color: #22c55e; font-weight: 700; }
+
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 32px; }
+    .process-step { text-align: center; padding: 18px; }
+    .process-num { width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; background: rgba(245,158,11,0.15); color: var(--accent); margin-bottom: 8px; }
+    .process-step h4 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .process-step p { color: var(--muted); font-size: 0.78rem; }
+
+    .final-cta { text-align: center; padding: 40px; border-radius: 20px; background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(217,119,6,0.04)); border: 1px solid rgba(245,158,11,0.15); margin-bottom: 32px; }
+    .final-cta h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+    .final-cta p { color: var(--muted); margin-bottom: 18px; }
+
+    footer { text-align: center; padding: 20px 0; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 700px) {
+      .packages-grid, .pain-grid, .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">🔍 信息差=利润 · AI全网比价</div>
+      <h1>1688最低价，<span>我帮你找</span></h1>
+      <p class="hero-sub">同一款商品1688上可能有10家供应商，价格差30%。我帮你全网比价找出最优货源。¥49/品。</p>
+      <a class="btn btn-primary" href="#demo">🔍 看比价样例 →</a>
+    </div>
+
+    <div class="pain-section">
+      <h2>😣 1688找货的坑</h2>
+      <div class="pain-grid">
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>搜索结果太多没法选</strong><span>搜一个产品出来几百家，一个个点开比对累死</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>价格信息不透明</strong><span>标价≠实价，有的含运费有的不含，起订量也都不一样</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>担心供应商不靠谱</strong><span>评分低的不敢选，评分高的又怕刷的，不知道怎么判断</span></div></div>
+        <div class="pain-item"><div class="pain-icon">❌</div><div class="pain-text"><strong>同样的东西进价不一样</strong><span>同行拿货15块，你拿20块，还没开始竞争就输了</span></div></div>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="demo">🔬 比价报告样例</h2>
+    <p class="section-sub">以「Type-C拓展坞 7合1」为例</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>供应商</th><th>报价(¥)</th><th>起订量</th><th>店铺评分</th><th>复购率</th><th>是否工厂</th><th>发货地</th><th>推荐</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>深圳A电子</td><td class="best">¥38.00</td><td>50个</td><td>4.8</td><td>35%</td><td>✅ 是</td><td>深圳</td><td class="best">⭐ 最优</td></tr>
+          <tr><td>东莞B科技</td><td>¥42.00</td><td>20个</td><td>4.6</td><td>28%</td><td>✅ 是</td><td>东莞</td><td>备选</td></tr>
+          <tr><td>义乌C贸易</td><td>¥35.00</td><td>200个</td><td>4.3</td><td>15%</td><td>❌ 不是</td><td>义乌</td><td>⚠ 量大可选</td></tr>
+          <tr><td>广州D电子</td><td>¥45.00</td><td>10个</td><td>4.9</td><td>42%</td><td>✅ 是</td><td>广州</td><td>小批量首选</td></tr>
+          <tr><td>深圳E科技</td><td>¥40.00</td><td>100个</td><td>4.5</td><td>20%</td><td>❌ 不是</td><td>深圳</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:28px;">💡 结论：深圳A电子报价最低且有工厂，50个起订量适中，综合最优。比最高报价省15%。50个就能省¥350。</p>
+
+    <h2 class="section-title">📦 服务套餐</h2>
+    <p class="section-sub">一份报告 = 5家供应商对比 + 推荐结论</p>
+    <div class="packages-grid">
+      <div class="pkg-card">
+        <div class="pkg-name">🔍 单品比价</div>
+        <div class="pkg-price">¥49<small>/品</small></div>
+        <p class="pkg-desc">一个产品，找到最优供应商</p>
+        <ul class="pkg-features">
+          <li>5家供应商对比</li>
+          <li>价格/起订量/评分/复购率</li>
+          <li>是否源头工厂判断</li>
+          <li>最终推荐 + 理由</li>
+          <li class="no">深度验厂</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact">选这个 →</a>
+      </div>
+      <div class="pkg-card popular">
+        <div class="pkg-badge">🔥 推荐</div>
+        <div class="pkg-name">📊 品类深挖</div>
+        <div class="pkg-price">¥99<small>/品类</small></div>
+        <p class="pkg-desc">一个品类全搜，适合大批量采购</p>
+        <ul class="pkg-features">
+          <li>10家供应商全网搜索</li>
+          <li>含1688+义乌小商品城数据</li>
+          <li>供应商谈判建议</li>
+          <li>OEM/ODM可行性分析</li>
+          <li>长期合作风险评估</li>
+        </ul>
+        <a class="pkg-cta primary" href="#contact">选这个 →</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">🏭 供应链优化</div>
+        <div class="pkg-price">¥199<small>/次</small></div>
+        <p class="pkg-desc">现有供应商体系全面体检</p>
+        <ul class="pkg-features">
+          <li>现有供应商价格竞争力评估</li>
+          <li>替代供应商推荐</li>
+          <li>成本优化方案</li>
+          <li>物流方案对比</li>
+          <li>1次免费深度咨询</li>
+        </ul>
+        <a class="pkg-cta secondary" href="#contact">选这个 →</a>
+      </div>
+    </div>
+
+    <h2 class="section-title">🔄 怎么找</h2>
+    <div class="process-steps">
+      <div class="process-step"><div class="process-num">1</div><h4>你发商品</h4><p>微信发商品图或链接</p></div>
+      <div class="process-step"><div class="process-num">2</div><h4>AI全网搜</h4><p>1688+多渠道交叉搜索</p></div>
+      <div class="process-step"><div class="process-num">3</div><h4>人工筛选</h4><p>剔除刷单/皮包公司</p></div>
+      <div class="process-step"><div class="process-num">4</div><h4>出报告</h4><p>3天内交付对比表+推荐</p></div>
+    </div>
+
+    <div class="final-cta" id="contact">
+      <h2>🔍 进货成本降5%，一年多赚几万</h2>
+      <p>加微信，把你目前在卖或想卖的商品发我。我帮你看看1688上最低多少钱能拿到。</p>
+      <p style="font-size:1.2rem;font-weight:800;margin-bottom:14px;">📱 微信：li3517568142</p>
+      <a class="btn btn-green" href="index.html#contact">📱 加微信发商品 →</a>
+      <p style="margin-top:12px;font-size:0.85rem;color:var(--muted);">💡 找不到更低价格不收费 · 信息差就是利润</p>
+    </div>
+
+    <footer>© 2026 李星华 · 1688货源比价 · 省下的就是赚到的</footer>
+  </div>
+</body>
+</html>
