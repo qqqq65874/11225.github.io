@@ -101,10 +101,10 @@
     .btn-demo:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(245,158,11,0.42); }
     /* Demo Showcase Strip */
     .demo-strip {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 36px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 36px;
     }
     .demo-strip-card {
-      display: flex; align-items: center; gap: 18px; padding: 24px 28px;
+      display: flex; align-items: center; gap: 14px; padding: 18px 20px;
       border-radius: 18px; background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(249,115,22,0.03));
       border: 2px solid rgba(245,158,11,0.25); text-decoration: none; color: inherit;
       transition: all .3s; position: relative; overflow: hidden;
@@ -151,6 +151,9 @@
       display: inline-block; padding: 2px 8px; border-radius: 99px;
       background: rgba(34,197,94,0.15); color: #22c55e; font-size: 0.7rem;
       font-weight: 700; margin-left: 6px; vertical-align: middle;
+    }
+    @media (max-width: 860px) {
+      .demo-strip { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       .demo-strip { grid-template-columns: 1fr; }
@@ -334,21 +337,53 @@
       </div>
     </section>
 
-    <!-- Live Demos Quick Access -->
+    <!-- Live Demos & Services Quick Access -->
     <section class="demo-strip reveal">
       <a href="factory-website.html" class="demo-strip-card">
         <div class="demo-strip-icon">🏭</div>
         <div class="demo-strip-info">
-          <h3>工厂企业网站演示 <span class="live-badge">● LIVE</span></h3>
-          <p>响应式官网示例 · 产品展示 · 企业形象 · 7天交付</p>
+          <h3>工厂企业网站 <span class="live-badge">● LIVE</span></h3>
+          <p>响应式官网 · 产品展示 · ¥99起</p>
         </div>
         <div class="demo-strip-arrow">→</div>
       </a>
       <a href="ai-selection-tool.html" class="demo-strip-card">
         <div class="demo-strip-icon">🤖</div>
         <div class="demo-strip-info">
-          <h3>AI智能选品工具演示 <span class="live-badge">● LIVE</span></h3>
-          <p>30+参数维度 · 竞品对比 · 利润分析 · 数据驱动决策</p>
+          <h3>AI电商选品分析 <span class="live-badge">● LIVE</span></h3>
+          <p>30+维度对比 · 利润分析 · ¥29起</p>
+        </div>
+        <div class="demo-strip-arrow">→</div>
+      </a>
+      <a href="product-copywriting.html" class="demo-strip-card">
+        <div class="demo-strip-icon">✍️</div>
+        <div class="demo-strip-info">
+          <h3>商品详情页代写</h3>
+          <p>AI批量出文案 · 标题+主图+详情 · ¥15起</p>
+        </div>
+        <div class="demo-strip-arrow">→</div>
+      </a>
+      <a href="profit-analysis.html" class="demo-strip-card">
+        <div class="demo-strip-icon">📊</div>
+        <div class="demo-strip-info">
+          <h3>利润分析报告</h3>
+          <p>全成本拆解 · 算清真实利润 · ¥39起</p>
+        </div>
+        <div class="demo-strip-arrow">→</div>
+      </a>
+      <a href="video-script.html" class="demo-strip-card">
+        <div class="demo-strip-icon">🎬</div>
+        <div class="demo-strip-info">
+          <h3>工厂视频脚本</h3>
+          <p>15秒分镜脚本 · 照着拍就行 · ¥29起</p>
+        </div>
+        <div class="demo-strip-arrow">→</div>
+      </a>
+      <a href="sourcing-service.html" class="demo-strip-card">
+        <div class="demo-strip-icon">🔍</div>
+        <div class="demo-strip-info">
+          <h3>1688货源比价</h3>
+          <p>全网最低价 · 5家供应商对比 · ¥49起</p>
         </div>
         <div class="demo-strip-arrow">→</div>
       </a>
@@ -411,47 +446,6 @@
           </ul>
           <a class="btn btn-outline" href="#contact" style="width:100%;text-align:center;justify-content:center;">了解详情 →</a>
         </div>
-      </div>
-    </section>
-
-    <!-- More Services -->
-    <section id="more-services" class="reveal">
-      <div class="section-label">增值轻服务</div>
-      <h2 class="section-title">更多AI加持的轻服务</h2>
-      <p class="section-desc">交付轻、价格低、纯AI赋能。每一项都是帮你省时间省钱的实用服务。</p>
-      <div class="services-grid" style="grid-template-columns: repeat(4, 1fr);">
-        <a href="product-copywriting.html" style="text-decoration:none;color:inherit;">
-          <div class="service-card" style="height:100%;">
-            <div class="service-icon">✍️</div>
-            <div class="service-name">商品详情页代写</div>
-            <div class="service-desc">AI批量生成淘宝/拼多多/1688商品文案，标题+主图+详情。</div>
-            <div class="service-price" style="font-size:1.1rem;">¥15 <small>起/条</small></div>
-          </div>
-        </a>
-        <a href="profit-analysis.html" style="text-decoration:none;color:inherit;">
-          <div class="service-card" style="height:100%;">
-            <div class="service-icon">📊</div>
-            <div class="service-name">利润分析报告</div>
-            <div class="service-desc">全成本拆解：进货+运费+佣金+广告+退货，算清真实利润。</div>
-            <div class="service-price" style="font-size:1.1rem;">¥39 <small>起/品</small></div>
-          </div>
-        </a>
-        <a href="video-script.html" style="text-decoration:none;color:inherit;">
-          <div class="service-card" style="height:100%;">
-            <div class="service-icon">🎬</div>
-            <div class="service-name">工厂视频脚本</div>
-            <div class="service-desc">抖音/快手15秒分镜脚本，含台词+字幕+BGM，照着拍就行。</div>
-            <div class="service-price" style="font-size:1.1rem;">¥29 <small>起/条</small></div>
-          </div>
-        </a>
-        <a href="sourcing-service.html" style="text-decoration:none;color:inherit;">
-          <div class="service-card" style="height:100%;">
-            <div class="service-icon">🔍</div>
-            <div class="service-name">1688货源比价</div>
-            <div class="service-desc">AI全网搜索最低价供应商，5家对比+源头工厂判断+推荐。</div>
-            <div class="service-price" style="font-size:1.1rem;">¥49 <small>起/品</small></div>
-          </div>
-        </a>
       </div>
     </section>
 
