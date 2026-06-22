@@ -29,8 +29,11 @@
     body {
       font-family: "Inter", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
       background: var(--bg);
-      background-image: radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.08), transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(129,140,248,0.06), transparent 40%);
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.08), transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(129,140,248,0.06), transparent 40%),
+        url('https://images.unsplash.com/photo-1557683316-973673baf926?w=200&q=60');
+      background-size: 100% 100%, 100% 100%, 200px auto;
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
@@ -59,8 +62,11 @@
     .hero {
       display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center;
       padding: 40px; border-radius: 20px;
-      background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(129,140,248,0.04));
+      background:
+        linear-gradient(135deg, rgba(10,15,30,0.88), rgba(10,15,30,0.82)),
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80') center/cover no-repeat;
       border: 1px solid var(--border); margin-bottom: 36px;
+      position: relative; overflow: hidden;
     }
     .hero-badge {
       display: inline-block; padding: 6px 14px; border-radius: 99px;
@@ -129,7 +135,7 @@
       padding: 18px 24px; margin-bottom: 36px; border-radius: 16px;
       background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(239,68,68,0.08));
       border: 2px dashed rgba(245,158,11,0.4); text-align: center;
-      animation: promo-pulse 2s ease-in-out infinite;
+      animation: promo-pulse 4s ease-in-out infinite;
     }
     @keyframes promo-pulse {
       0%, 100% { border-color: rgba(245,158,11,0.4); box-shadow: 0 0 20px rgba(245,158,11,0.05); }
@@ -140,8 +146,8 @@
     .promo-banner .promo-sub { font-size: 0.85rem; color: var(--muted); }
     .promo-badge {
       display: inline-block; padding: 3px 10px; border-radius: 99px;
-      background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff;
-      font-size: 0.72rem; font-weight: 700; animation: badge-glow 1.5s ease-in-out infinite;
+      background: linear-gradient(135deg, #d97706, #dc2626); color: #fff;
+      font-size: 0.72rem; font-weight: 700; animation: badge-glow 3s ease-in-out infinite;
     }
     @keyframes badge-glow {
       0%, 100% { box-shadow: 0 0 8px rgba(245,158,11,0.4); }

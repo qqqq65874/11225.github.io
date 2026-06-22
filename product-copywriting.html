@@ -16,7 +16,13 @@
     body {
       font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
       background: var(--bg);
-      background-image: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.06), transparent 50%);
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.06), transparent 50%),
+        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=70');
+      background-size: 100% 100%, cover;
+      background-position: 0 0, center 30%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       color: var(--text); line-height: 1.6;
     }
     .container { width: min(100% - 36px, 1000px); margin: 0 auto; }
@@ -106,6 +112,7 @@
       <a class="btn btn-primary" href="#packages">📦 查看套餐 →</a>
     </div>
 
+    <div style="width:100%;height:180px;border-radius:16px;overflow:hidden;margin-bottom:28px;background:url('https://images.unsplash.com/photo-1542744094-3a31f272c490?w=960&q=75') center/cover no-repeat;border:1px solid var(--border);"></div>
     <div class="pain-section">
       <h2>😣 你的商品文案是不是也这样？</h2>
       <div class="pain-grid">
